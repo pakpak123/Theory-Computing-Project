@@ -1,0 +1,65 @@
+body{
+    background-image: url("https://img.freepik.com/premium-vector/luxury-thai-pattern-blue-gold-theme-background-vector_94250-314.jpg");
+    background-color: #cccccc;
+    background-size: contain;
+    font-family: 'Charm', cursive;
+    position: relative;
+}
+.centerpic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+#bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: rgb(255, 255, 255);
+  }
+  table{
+    border-collapse: collapse;
+    padding: 20px;
+    margin: 0;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  td{
+    padding: 20px;
+  }
+  .checkbox{
+    width: 200px;
+    background-color:#e3a20b;
+    color:#ffffff;
+    font-size: 25px;
+    text-align: center;
+    margin: auto;
+  }
+  input{
+    margin: auto; 
+    display: flex;
+  }
+  .center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  .container {
+    height:100px;
+    position: relative;
+  }
+  td .checkbox:after {
+    left: 8px;
+    bottom: 5px;
+    width: 6px;
+    height: 12px;
+    border: solid rgb(255, 255, 255);
+    border-width: 0 4px 4px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
