@@ -3,7 +3,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ตัวแม่จะแคร์เพื่อ</title>
-    <link rel="stylesheet" type="text/css" href="TestToC.css" />
+    <link rel="stylesheet" type="text/css" href="css/TestToC.css" />
+    <link rel="stylesheet" type="text/css" href="css/virtual-select.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,41 +20,40 @@
       class="centerpic"
     />
     <div id="bottom">โดย กลุ่มตัวแม่จะแคร์เพื่อ</div>
-    <table>
-      <tr>
-        <td class="checkbox">จังหวัดฉะเชิงเทรา</td>
-        <td class="checkbox">จังหวัดชลบุรี</td>
-        <td class="checkbox">จังหวัดชัยนาท</td>
-        <td class="checkbox">จังหวัดชัยภูมิ</td>
-      </tr>
-
-      <tr>
-        <td class="checkbox">
-          <input type="checkbox" />
-        </td>
-        <td class="checkbox">
-          <input type="checkbox" />
-        </td>
-        <td class="checkbox">
-          <input type="checkbox" />
-        </td>
-        <td class="checkbox">
-          <input type="checkbox" />
-        </td>
-      </tr>
-    </table>
 
     <div class="container">
-      <div class="center">
+        <div class="selects">
+          <label>วัดในแต่ละจังหวัด</label>
+          <br/>
+          <select id="multi_option" multiple name="native-select" placeholder="กรุณาเลือกจังหวัด"
+            data-silent-initial-value-set="false">
+            <option value="1">ฉะเชิงเทรา</option>
+            <option value="2">ชลบุรี</option>
+            <option value="3">ชัยนาท</option>
+            <option value="4">ชัยภูมิ</option>
+          </select>
+        </div>
+        
         <button>กดเลย</button>
         <br>
-        
+        <!-- ตรงนี้เป็นวิธีการเพิ่มLink สำหรับเปิดไฟล์หรือว่าดาวน์โหลดไฟล์ ลองเล่นดูได้ ปล.ไฟล์.csv ไม่สามารถแสดงได้ต้องบังคับโหลดเท่านั้น -->
         <a href="data/test.txt"> View Infomation</a>
         <br>
         <a href="data/test.txt" download="เนื้อเพลงธาตุทองซาวน์"> Download Infomation</a>
         <br>
         <a href="data/Practice PTSA.csv" download="Practice PTSA"> Download Practice PTSA</a>
-      </div>
+
     </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/virtual-select.min.js"></script>
+    <script type="text/javascript">
+      VirtualSelect.init({
+        ele: '#multi_option'
+      });
+    </script>
   </body>
 </html>
