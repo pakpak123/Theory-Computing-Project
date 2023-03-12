@@ -52,5 +52,35 @@ label {
   padding-top: 20px;
   position: relative;
   background-color: orange;
-  
+  padding-bottom: 50px;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Charm', cursive;
+  padding: 20px;
+  padding-top: 50px;
+  color: white;
+}
+
+h4 {
+  font-family: 'Kanit';
+}
+
+.sub-container {
+  padding: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+li {
+  font-family: 'Krub';
+}
+
+.button {
+  text-align: center;
+}
+
+a {
+  margin: 2px;
 }
