@@ -85,10 +85,10 @@ with open(f'วัดใน{ProvinceName}.csv', "w", encoding='utf-8') as f:
 
 #-----establish a MySQL connection-----
 db = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="Pondps123",
-  database="test"
+  host="sql12.freemysqlhosting.net",
+  user="sql12605223",
+  password="YahUp7mney",
+  database="sql12605223"
 )
 
 #-----create a cursor object-----
