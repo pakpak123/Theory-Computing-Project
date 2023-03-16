@@ -95,21 +95,21 @@ db = mysql.connector.connect(
 mycursor = db.cursor()
 
 # define the table name and columns
-table_name = "tableA"
+table_name = "Chachoengsao_Temple"
 columns = "id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255)"
 
 # create the table if it doesn't exist
 mycursor.execute("CREATE TABLE IF NOT EXISTS " + table_name + " (" + columns + ")")
 
 #-----clear all row in table
-mycursor.execute("TRUNCATE TABLE tableA")
+mycursor.execute("TRUNCATE TABLE "+ table_name)
 
 
 
 #-----add data-----
 i=1
 for row in TempleName_list:
-    mycursor.execute("INSERT INTO tableA (id,NAME) VALUES (%s, %s)",[i,row])
+    mycursor.execute("INSERT INTO "+ table_name + " (id,NAME) VALUES (%s, %s)",[i,row])
     db.commit()
     #print(i,row)
     i+=1
