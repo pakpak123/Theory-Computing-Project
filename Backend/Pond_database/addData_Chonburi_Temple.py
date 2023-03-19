@@ -65,10 +65,10 @@ drop_duplicateTemple = TempleName_list.pop(index_duplicateTemple)
     #f.write(f'วัดใน{ProvinceName}มี {len(TempleName_list)} สถานที่')
 
 db = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="Pondps123",
-  database="test"
+  host="sql12.freemysqlhosting.net",
+  user="sql12605223",
+  password="YahUp7mney",
+  database="sql12605223"
 )
 mycursor = db.cursor()
 

@@ -85,10 +85,10 @@ for i in range(count_for_PopList):
 
 #-----establish a MySQL connection-----
 db = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="Pondps123",
-  database="test"
+  host="sql12.freemysqlhosting.net",
+  user="sql12605223",
+  password="YahUp7mney",
+  database="sql12605223"
 )
 
 #-----create a cursor object-----
@@ -111,7 +111,7 @@ for row in TempleName_list:
     db.commit()
     #print(i,row)
     i+=1
-print(i-1,row)
+print(i-1,row) #print last temple
 mycursor.close()
 db.close()
 print("Done")

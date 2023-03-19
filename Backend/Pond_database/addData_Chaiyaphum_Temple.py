@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import re
 import mysql.connector
 
-page = requests.get("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%B1%E0%B8%A2%E0%B8%99%E0%B8%B2%E0%B8%97")
+page = requests.get("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%B1%E0%B8%A2%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4")
 page.content
 
 soup_for_ProvinceName = BeautifulSoup(page.content, 'html.parser')
@@ -32,6 +32,9 @@ new_temple_name = re.sub(
 TempleName_list = new_temple_name.split('\n')
 # print(TempleName_list)
 
+TempleName_list = list(map(lambda x: x.replace(
+    'วัดวังอุดม(', 'วัดวังอุดม'), TempleName_list))
+
 RegularExpression_pattern_for_delete_Not_temple = r'วัดไทย'
 search_notTemple = re.search(
     RegularExpression_pattern_for_delete_Not_temple, '\n'.join(TempleName_list))
@@ -54,17 +57,15 @@ for i in range(count_for_PopList):
 
     #f.write(f'วัดใน{ProvinceName}มี {len(TempleName_list)} สถานที่')
 
-
-
 db = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="Pondps123",
-  database="test"
+  host="sql12.freemysqlhosting.net",
+  user="sql12605223",
+  password="YahUp7mney",
+  database="sql12605223"
 )
 mycursor = db.cursor()
 
-table_name = "Chainat_Temple"
+table_name = "Chaiyaphum_Temple"
 columns = "id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(45)"
 
 mycursor.execute("CREATE TABLE IF NOT EXISTS " + table_name + " (" + columns + ")")
