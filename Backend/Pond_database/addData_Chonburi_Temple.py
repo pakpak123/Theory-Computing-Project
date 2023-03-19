@@ -64,12 +64,15 @@ drop_duplicateTemple = TempleName_list.pop(index_duplicateTemple)
 
     #f.write(f'วัดใน{ProvinceName}มี {len(TempleName_list)} สถานที่')
 
+#-----establish a MySQL connection-----
+# settingแล้วแต่เครื่อง ส่วนใหญ่passwordต่าง
 db = mysql.connector.connect(
-  host="sql12.freemysqlhosting.net",
-  user="sql12605223",
-  password="YahUp7mney",
-  database="sql12605223"
+  host="localhost",
+  user="root",
+  password="Pondps123",
+  database="test"
 )
+
 mycursor = db.cursor()
 
 table_name = "Chonburi_Temple"
