@@ -57,12 +57,15 @@ for i in range(count_for_PopList):
 
     #f.write(f'วัดใน{ProvinceName}มี {len(TempleName_list)} สถานที่')
 
+#-----establish a MySQL connection-----
+# settingแล้วแต่เครื่อง ส่วนใหญ่passwordต่าง
 db = mysql.connector.connect(
   host="localhost",
   user="root",
   password="Pondps123",
   database="test"
 )
+
 mycursor = db.cursor()
 
 table_name = "Chaiyaphum_Temple"
