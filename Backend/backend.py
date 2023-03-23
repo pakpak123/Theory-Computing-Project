@@ -62,14 +62,20 @@ def database(web):
 
     return TempleName_list, ProvinceName
 
+Chachoengsao_Temple, Chachoengsao = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%89%E0%B8%B0%E0%B9%80%E0%B8%8A%E0%B8%B4%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%A3%E0%B8%B2")
+Chainat_Temple, Chainat = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%B1%E0%B8%A2%E0%B8%99%E0%B8%B2%E0%B8%97")
+Chaiyaphum_Temple, Chaiyaphum = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%B1%E0%B8%A2%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4")
+Chonburi_Temple, Chonburi = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%A5%E0%B8%9A%E0%B8%B8%E0%B8%A3%E0%B8%B5")
+
+
 #-----สร้าง CSV-----
-def writeCSV(data, name):
+def write(data, name):
     with open(f'วัดใน{name}.csv', "w", encoding='utf-8') as f:
         for TempleName in data:
             f.write(TempleName + "\n")
 
 #-----สร้าง database และ add ข้อมูล-----
-def addData(data, name):
+def addDataToDatabase(data, name):
     table_name = changeName(name)
     columns = "id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(45)"
 
@@ -80,7 +86,7 @@ def addData(data, name):
         mycursor.execute("INSERT INTO "+ table_name + " (id,NAME) VALUES (%s, %s)",[i,row])
         db.commit()
         i+=1
-    print(i-1,row) #print last temple
+    #print(i-1,row) #print last temple
 
 #-----เปลี่ยนชื่อจากภาษาไทยเป็นภาษาอังกฤษ-----
 def changeName(name):
@@ -93,21 +99,30 @@ def changeName(name):
     elif name == "จังหวัดชลบุรี":
         return "Chonburi_Temple"
     
+def addData():
+    addDataToDatabase(Chachoengsao_Temple, Chachoengsao)
+    addDataToDatabase(Chainat_Temple, Chainat)
+    addDataToDatabase(Chaiyaphum_Temple, Chaiyaphum)
+    addDataToDatabase(Chonburi_Temple, Chonburi)
+
+def writeCSV():
+    write(Chachoengsao_Temple, Chachoengsao)
+    write(Chainat_Temple, Chainat)
+    write(Chaiyaphum_Temple, Chaiyaphum)
+    write(Chonburi_Temple, Chonburi)
+
 #-----main-----
-Chachoengsao_Temple, Chachoengsao = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%89%E0%B8%B0%E0%B9%80%E0%B8%8A%E0%B8%B4%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%A3%E0%B8%B2")
-Chainat_Temple, Chainat = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%B1%E0%B8%A2%E0%B8%99%E0%B8%B2%E0%B8%97")
-Chaiyaphum_Temple, Chaiyaphum = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%B1%E0%B8%A2%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4")
-Chonburi_Temple, Chonburi = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%A5%E0%B8%9A%E0%B8%B8%E0%B8%A3%E0%B8%B5")
+addData()
+#writeCSV()
 
-addData(Chachoengsao_Temple, Chachoengsao)
-addData(Chainat_Temple, Chainat)
-addData(Chaiyaphum_Temple, Chaiyaphum)
-addData(Chonburi_Temple, Chonburi)
-
-#writeCSV(Chachoengsao_Temple, Chachoengsao)
-#writeCSV(Chainat_Temple, Chainat)
-#writeCSV(Chaiyaphum_Temple, Chaiyaphum)
-#writeCSV(Chonburi_Temple, Chonburi)
+#-----data Chachoengsao Temple-----
+table_name1 = changeName(Chachoengsao)
+mycursor.execute("SELECT name FROM " + table_name1)
+myresult = mycursor.fetchall()
+list1 = []
+for x in myresult:
+  list1.append(x[0])
+print(list1)
 
 mycursor.close()
 db.close()
