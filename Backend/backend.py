@@ -3,6 +3,14 @@ from bs4 import BeautifulSoup
 import re
 import mysql.connector
 
+db = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="Pondps123",
+    database="test"
+    )
+mycursor = db.cursor()
+
 #-----ดึงข้อมูลจากเว็บ-----
 def database(web):
     page = requests.get(web)
@@ -34,7 +42,6 @@ def database(web):
         TempleName_list = list(map(lambda x: x.replace(
             'วัดวังอุดม(', 'วัดวังอุดม'), TempleName_list))
 
-
     RegularExpression_pattern_for_delete_Not_temple = r'วัดไทย'
     search_notTemple = re.search(
         RegularExpression_pattern_for_delete_Not_temple, '\n'.join(TempleName_list))
@@ -63,14 +70,6 @@ def writeCSV(data, name):
 
 #-----สร้าง database และ add ข้อมูล-----
 def addData(data, name):
-    db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="Pondps123",
-    database="test"
-    )
-    mycursor = db.cursor()
-
     table_name = changeName(name)
     columns = "id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(45)"
 
@@ -82,8 +81,6 @@ def addData(data, name):
         db.commit()
         i+=1
     print(i-1,row) #print last temple
-    mycursor.close()
-    db.close()
 
 #-----เปลี่ยนชื่อจากภาษาไทยเป็นภาษาอังกฤษ-----
 def changeName(name):
@@ -97,12 +94,20 @@ def changeName(name):
         return "Chonburi_Temple"
     
 #-----main-----
-data1, name1 = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%89%E0%B8%B0%E0%B9%80%E0%B8%8A%E0%B8%B4%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%A3%E0%B8%B2")
-data2, name2 = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%B1%E0%B8%A2%E0%B8%99%E0%B8%B2%E0%B8%97")
-data3, name3 = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%B1%E0%B8%A2%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4")
-data4, name4 = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%A5%E0%B8%9A%E0%B8%B8%E0%B8%A3%E0%B8%B5")
+Chachoengsao_Temple, Chachoengsao = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%89%E0%B8%B0%E0%B9%80%E0%B8%8A%E0%B8%B4%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%A3%E0%B8%B2")
+Chainat_Temple, Chainat = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%B1%E0%B8%A2%E0%B8%99%E0%B8%B2%E0%B8%97")
+Chaiyaphum_Temple, Chaiyaphum = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%B1%E0%B8%A2%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4")
+Chonburi_Temple, Chonburi = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%A5%E0%B8%9A%E0%B8%B8%E0%B8%A3%E0%B8%B5")
 
-addData(data1, name1)
-addData(data2, name2)
-addData(data3, name3)
-addData(data4, name4)
+addData(Chachoengsao_Temple, Chachoengsao)
+addData(Chainat_Temple, Chainat)
+addData(Chaiyaphum_Temple, Chaiyaphum)
+addData(Chonburi_Temple, Chonburi)
+
+#writeCSV(Chachoengsao_Temple, Chachoengsao)
+#writeCSV(Chainat_Temple, Chainat)
+#writeCSV(Chaiyaphum_Temple, Chaiyaphum)
+#writeCSV(Chonburi_Temple, Chonburi)
+
+mycursor.close()
+db.close()
