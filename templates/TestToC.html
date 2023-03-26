@@ -3,8 +3,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ตัวแม่จะแคร์เพื่อ</title>
-    <link rel="stylesheet" type="text/css" href="css/TestToC.css" />
-    <link rel="stylesheet" type="text/css" href="css/virtual-select.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/TestToC.css" />
+    <link rel="stylesheet" type="text/css" href="../css/virtual-select.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,6 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Charm&display=swap"
       rel="stylesheet"
     />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
   </head>
   <body>
     <img
@@ -20,6 +21,17 @@
       class="centerpic"
     />
     <div id="bottom">โดย กลุ่มตัวแม่จะแคร์เพื่อ</div>
+    <nav class="navbar fixed-top navbar-expand-md">
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar">
+          <a class="nav-item nav-link" href="/templates/TestToC.html"><i class="fa fa-home"></i> Home</a>
+          <a class="nav-item nav-link" href="/templates/RE.html"><i class="fa fa-code"></i> การใช้ Re</a>
+          <a class="nav-item nav-link" href="https://youtu.be/4_F0a7A7ge0"><i class="fa fa-youtube-play"></i> Youtube</a>
+          <a class="nav-item nav-link" href="https://github.com/pakpak123/Theory-Computing-Project"><i class="fa fa-github"></i> Github</a>
+          <a class="nav-item nav-link" href="https://github.com/pakpak123/Theory-Computing-Project/tree/main/Temple%20Data"><i class="fa fa-download" aria-hidden="true"></i> .csv</a>
+        </div>
+      </div>
+    </nav>
 
     <div class="container">
         <div class="selects">
@@ -32,7 +44,7 @@
             <option value="3">ชัยนาท</option>
             <option value="4">ชัยภูมิ</option>
           </select>
-          <button>กดเลย</button>
+          <a class="btn btn-outline-light" href="#1" role="button">กดเลย</a>
         </div>
         
         
@@ -105,7 +117,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/virtual-select.min.js"></script>
+    <script type="text/javascript" src="../js/virtual-select.min.js"></script>
     <script type="text/javascript">
       VirtualSelect.init({
         ele: '#multi_option'
