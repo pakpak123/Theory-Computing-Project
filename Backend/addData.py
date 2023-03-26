@@ -4,10 +4,10 @@ import re
 import mysql.connector
 
 db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="Pondps123",
-    database="test"
+    host="sql12.freemysqlhosting.net",
+    user="sql12608247",
+    password="jajr8yFYK9",
+    database="sql12608247"
     )
 mycursor = db.cursor()
 

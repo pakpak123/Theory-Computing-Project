@@ -1,10 +1,10 @@
 import mysql.connector
 
 db = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="Pondps123",
-  database="test"
+  host="sql12.freemysqlhosting.net",
+  user="sql12608247",
+  password="jajr8yFYK9",
+  database="sql12608247"
 )
 
 #-----data Chachoengsao Temple-----
@@ -24,24 +24,24 @@ myresult = mycursor.fetchall()
 list2 = []
 for x in myresult:
   list2.append(x[0])
-#print(list2)
+print(list2)
 
 #-----data Chaiyaphum Temple-----
-table_name3 = "Chaiyaphum_Temple"
-mycursor.execute("SELECT name FROM " + table_name3)
-myresult = mycursor.fetchall()
-list3 = []
-for x in myresult:
-  list3.append(x[0])
+#table_name3 = "Chaiyaphum_Temple"
+#mycursor.execute("SELECT name FROM " + table_name3)
+#myresult = mycursor.fetchall()
+#list3 = []
+#for x in myresult:
+#  list3.append(x[0])
 #print(list3)
 
 #-----data Chonburi Temple-----
-table_name4 = "Chonburi_Temple"
-mycursor.execute("SELECT name FROM " + table_name4)
-myresult = mycursor.fetchall()
-list4 = []
-for x in myresult:
-  list4.append(x[0])
+#table_name4 = "Chonburi_Temple"
+#mycursor.execute("SELECT name FROM " + table_name4)
+#myresult = mycursor.fetchall()
+#list4 = []
+#for x in myresult:
+#  list4.append(x[0])
 #print(list4)
 
 mycursor.close()
