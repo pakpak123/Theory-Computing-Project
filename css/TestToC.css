@@ -43,16 +43,35 @@ label {
 
 #bottom {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 10;
+    right: 10;
     color: rgb(255, 255, 255);
     font-family: 'Charm', cursive;
 }
+nav{
+    background-image: linear-gradient(to top, rgba(255,0,0,0), #001c6a);
 
+}
+.navbar {
+    /* background-color: #001c6a; */
+    text-align: center;
+    overflow: hidden;
+    width: 86%;
+    margin: auto;
+}
+
+.navbar a {
+    float: left;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 20px;
+}
 .container {
     padding-top: 20px;
     position: relative;
-    background-color: orange;
+    background-color: rgb(255, 185, 55);
     padding-bottom: 50px;
 }
 
