@@ -99,15 +99,15 @@ Chainat_Temple, Chainat = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B
 Chaiyaphum_Temple, Chaiyaphum = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%B1%E0%B8%A2%E0%B8%A0%E0%B8%B9%E0%B8%A1%E0%B8%B4")
 Chonburi_Temple, Chonburi = database("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%A5%E0%B8%9A%E0%B8%B8%E0%B8%A3%E0%B8%B5")
 
-addData(Chachoengsao_Temple, Chachoengsao)
-addData(Chainat_Temple, Chainat)
-addData(Chaiyaphum_Temple, Chaiyaphum)
-addData(Chonburi_Temple, Chonburi)
+# addData(Chachoengsao_Temple, Chachoengsao)
+# addData(Chainat_Temple, Chainat)
+# addData(Chaiyaphum_Temple, Chaiyaphum)
+# addData(Chonburi_Temple, Chonburi)
 
-#writeCSV(Chachoengsao_Temple, Chachoengsao)
-#writeCSV(Chainat_Temple, Chainat)
-#writeCSV(Chaiyaphum_Temple, Chaiyaphum)
-#writeCSV(Chonburi_Temple, Chonburi)
+writeCSV(Chachoengsao_Temple, Chachoengsao)
+writeCSV(Chainat_Temple, Chainat)
+writeCSV(Chaiyaphum_Temple, Chaiyaphum)
+writeCSV(Chonburi_Temple, Chonburi)
 
 mycursor.close()
 db.close()
