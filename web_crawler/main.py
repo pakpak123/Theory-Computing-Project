@@ -24,6 +24,7 @@ def home():
     "Chaiyaphum" : "D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\data\Chaiyaphum_Temple.csv",
     "Chonburi": "D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\data\Chonburi_Temple.csv"
     }
+    path_download_file = "D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\data\Download.csv"
 
     if request.method == 'POST':
         
@@ -47,12 +48,20 @@ def home():
                 reader= csv.reader(file)
                 for e in reader:
                     temple_names.append(e)
+
+        #--- เขียนชื่อวัดใส่csvสำหรับดาวน์โหลด
+        with open(path_download_file, "w", encoding='utf-8') as file:
+            for row in temple_names:
+                for temple in row:
+                    if(temple != '0'):
+                        file.write(temple + "\n")
+
         return render_template("index.html",temples=temple_names,provinces=province_names)
     return render_template("index.html")
 
 @app.route("/download")
 def download_file():
-    path = "D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\data\Chainat_Temple.csv"
+    path = "D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\data\Download.csv"
     return send_file(path,as_attachment=True)
 
 
