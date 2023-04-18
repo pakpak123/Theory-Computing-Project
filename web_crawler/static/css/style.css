@@ -6,6 +6,10 @@ body {
     position: relative;
 }
 
+.nowrap {
+    white-space: nowrap ;
+}
+
 .centerpic {
     display: flex;
     position: relative;

@@ -18,8 +18,8 @@
           <input type="submit" name="submit" class="btn btn-info" value="Submit" />
           </form>
         </div>
-
         <br>
+
         <!-- ตรงนี้เป็นวิธีการเพิ่มLink สำหรับเปิดไฟล์หรือว่าดาวน์โหลดไฟล์ ลองเล่นดูได้ ปล.ไฟล์.csv ไม่สามารถแสดงได้ต้องบังคับโหลดเท่านั้น -->
         <!-- <a href="data/test.txt"> View Infomation</a>
         <br>
@@ -27,22 +27,27 @@
         <br> -->
         <!-- <a href="data/Practice PTSA.csv" download="Practice PTSA"> Download Practice PTSA</a>
          -->
-         <a href="{{ url_for ('download_file') }}" > Download csv </a>
 
-                <!-- ส่วนแสดงข้อมูล -->
+        <!-- ส่วนแสดงชื่อจังหวัดที่เลือก -->
+        <p>
+          <span class="nowrap">จังหวัดที่เลือก : </span>
+          {% for province in provinces %}
+          <span class="nowrap"> {{ province }}</span>
+          {% endfor %}
+        </p>
 
-        <!-- <div class="container">
-          <div class="selects">
-            {{data}}
-          </div> -->
+        <a href="{{ url_for ('download_file') }}" > Download csv </a>
+
+          <!-- ส่วนแสดงชื่อวัด -->
           <div class="container">
             <table id="datatable">
+
               {% for province in provinces %}
                 {% for row_temple in temples %}
                   <tr>
                   {% for col in row_temple %}
                   {% if col == '0' %}
-                  <td>-------{{ province }}-------</td>
+                  <td>------------------------------------ {{ province }} ------------------------------------</td>
                   {% else %}
                   <td>{{ col }}</td>
                   {% endif %}
