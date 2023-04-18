@@ -87,7 +87,7 @@
           if ($('#provinces').val() != '') {
             var form_data = $(this).serialize();
             $.ajax({
-              url: "/list_add",
+              url: "/showData",
               method: "POST",
               data: form_data,
               success: function (data) {
@@ -117,17 +117,24 @@
     <a href="data/Practice PTSA.csv" download="Practice PTSA"> Download Practice PTSA</a>
 
     <!-- ส่วนแสดงข้อมูล -->
+    <!-- {% if provinces %} -->
     <div class="container">
       <table id="datatable">
-        {% for row in csv %}
+        <!-- {% for row in temples %}
           <tr>
           {% for col in row %}
           <td>{{ col }}</td>
           {% endfor %}
           </tr>
+        {% endfor %} -->
+        {% for row in provinces %}
+          <tr>
+          <td>{{ row }}</td>
+          </tr>
         {% endfor %}
       </table>
     </div>
+    <!-- {% endif %} -->
 
 
 
