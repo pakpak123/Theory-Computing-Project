@@ -14,9 +14,9 @@ def thaiProvince(province_eng):
     }
     return province_th[province_eng]
 
+
 @app.route("/",methods=['GET','POST'])
 def home():
-
     province_names = ["Chachoengsao","Chainat","Chaiyaphum","Chonburi"]
     path_provinces = {
     "Chachoengsao" : "D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\data\Chachoengsao_Temple.csv",
@@ -54,6 +54,11 @@ def home():
 def download_file():
     path = "D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\data\Chainat_Temple.csv"
     return send_file(path,as_attachment=True)
+
+
+@app.route("/regex", methods=["GET"])
+def regex():
+    return render_template("RE.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
