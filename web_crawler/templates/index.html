@@ -87,7 +87,7 @@
           if ($('#provinces').val() != '') {
             var form_data = $(this).serialize();
             $.ajax({
-              url: "/ajax_add",
+              url: "/list_add",
               method: "POST",
               data: form_data,
               success: function (data) {
