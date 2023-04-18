@@ -4,25 +4,30 @@ import pandas as pd
 
 app = Flask(__name__)
 
-def Convert(string):
-    li = list(string.split(","))
-    return li
+def thaiProvince(province_eng):
+    province_th = {
+        "Chachoengsao" : "ฉะเชิงเทรา",
+        "Chainat" : "ชัยนาท",
+        "Chaiyaphum" : "ชัยภูมิ",
+        "Chonburi": "ชลบุรี"
+    }
+    return province_th[province_eng]
 
 @app.route("/")
 #--------- แสดงข้อมูลจาก csv
-def home():
-    l = []
-    data = "Hi"
-    path = 'D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\sample_data.csv'
-    l.append("วัดในฉะเชิงเทรา")
-    with open(path,encoding='utf8') as file:
-        reader = csv.reader(file)
-        for e in reader:
-            l.append(e)
-        # print(l)
-        return render_template("index.html",data=data, csv=l)
-# def home(): 
-#     return render_template("index.html")
+# def home():
+#     l = []
+#     data = "Hi"
+#     path = 'D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\sample_data.csv'
+#     l.append("วัดในฉะเชิงเทรา")
+#     with open(path,encoding='utf8') as file:
+#         reader = csv.reader(file)
+#         for e in reader:
+#             l.append(e)
+#         # print(l)
+#         return render_template("index.html",data=data, csv=l)
+def home(): 
+    return render_template("index.html")
     
 
 #--------- สร้างเงื่อนไขให้แสดงข้อมูล
@@ -47,17 +52,20 @@ def list_add():
 
         print(hidden_provinces)
         temple_names = []
+        province_names = []
 
         for province in hidden_provinces:
-            temple_names.append([province])
+            province_names.append(thaiProvince(province))
             with open(path_provinces[province],encoding='utf8') as file:
                 reader= csv.reader(file)
                 for e in reader:
                     temple_names.append(e)
-                # print(l)
+            temple_names.append("------------------------")
         print(temple_names)
-        return jsonify(msg)
-        # return render_template("index.html", province=province ,csv=temple_names)
+        print("///******************///")
+        print(province_names)
+        # return jsonify(msg)
+    return render_template("index.html", province=province ,csv=temple_names,provinces=province_names)
         
         # else:
         #     return render_template("index.html")
