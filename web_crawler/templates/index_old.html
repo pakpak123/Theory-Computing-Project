@@ -1,0 +1,135 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ตัวแม่จะแคร์เพื่อ</title>
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/style.css') }}" >
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/virtual-select.min.css') }}" >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Charm&display=swap"
+      rel="stylesheet"
+    />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+  </head>
+  <body>
+    <img
+      src="https://s359.kapook.com/pagebuilder/b62916bb-10ce-462c-a9ba-cd01dabae311.jpg"
+      class="centerpic"
+    />
+    <div id="bottom">โดย กลุ่มตัวแม่จะแคร์เพื่อ</div>
+    <nav class="navbar fixed-top navbar-expand-md">
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar">
+          <a class="nav-item nav-link" href="/templates/index.html"><i class="fa fa-home"></i> Home</a>
+          <a class="nav-item nav-link" href="/templates/RE.html"><i class="fa fa-code"></i> การใช้ R.E.</a>
+          <a class="nav-item nav-link" href="https://youtu.be/4_F0a7A7ge0"><i class="fa fa-youtube-play"></i> Youtube</a>
+          <a class="nav-item nav-link" href="https://github.com/pakpak123/Theory-Computing-Project"><i class="fa fa-github"></i> Github</a>
+          <a class="nav-item nav-link" href="https://github.com/pakpak123/Theory-Computing-Project/tree/main/Temple%20Data"><i class="fa fa-download" aria-hidden="true"></i> .csv</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+        <div class="selects">
+          <label>วัดในแต่ละจังหวัด</label>
+          <br/>
+          <select id="multi_option" multiple name="native-select" placeholder="กรุณาเลือกจังหวัด"
+            data-silent-initial-value-set="false">
+            <option value="1">ฉะเชิงเทรา</option>
+            <option value="2">ชลบุรี</option>
+            <option value="3">ชัยนาท</option>
+            <option value="4">ชัยภูมิ</option>
+          </select>
+          <a class="btn btn-outline-light" href="#1" role="button">กดเลย</a>
+        </div>
+
+        <!-- ส่วนแสดงข้อมูล -->
+        <div class="container">
+          <div class="selects">
+            {{data}}
+          </div>
+      
+        
+        
+        <br>
+        <!-- ตรงนี้เป็นวิธีการเพิ่มLink สำหรับเปิดไฟล์หรือว่าดาวน์โหลดไฟล์ ลองเล่นดูได้ ปล.ไฟล์.csv ไม่สามารถแสดงได้ต้องบังคับโหลดเท่านั้น -->
+        <a href="data/test.txt"> View Infomation</a>
+        <br>
+        <a href="data/test.txt" download="เนื้อเพลงธาตุทองซาวน์"> Download Infomation</a>
+        <br>
+        <a href="data/Practice PTSA.csv" download="Practice PTSA"> Download Practice PTSA</a>
+
+    </div>
+
+     <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container1">
+        <div class="row">
+          <div class="col-sm-12 col-md-3">
+            <h6>จัดทำโดย กลุ่มตัวแม่จะแคร์เพื่อ</h6>
+            <p class="text-justify">
+            63010417 ธนภรณ์  ศรีบุญพงศ์<br>
+            63010495	นภัสวรรณ  ละมนเทียร<br>
+            63010555	ปฏิภาณ ศรีธรณ์<br>
+            63010608	ปิยวรรณ  หน่อปาล์ม<br>
+            63010690	พิมพ์ลพัทร สุระแย้ม</p>
+          </div>
+
+          <div class="col-xs-6 col-md-2">
+            <h6></h6>
+            <p class="text-justify"><br>
+            63010459	ธัญลักษณ์  อำไพ<br>
+            63010524	นิชาภา พักเง้า<br>
+            63010569	ประภัสสร  สุดใจใหม่<br>
+            63010666	พัณณ์ชิตา วรต่าย<br>
+            63010749	ภาวิดา สัตยมุข</p>
+          </div>
+          <div class="col-xs-6 col-md-3">
+            <h6>เสนอ </h6>
+            <ul class="footer-links">
+              <li><a>รศ. ดร. เกียรติกูล เจียรนัยธนะกิจ</a></li>
+              <li><a> 01076013 THEORY OF COMPUTATION </a></li>
+            </ul>
+          </div>
+
+          <div class="col-xs-6 col-md-3">
+            <h6>รายละเอียดเพิ่มเติม</h6>
+            <ul class="footer-links">
+              <li><a href="https://github.com/pakpak123/Theory-Computing-Project/tree/main/Temple%20Data">File csv</a></li>
+              <li><a href="https://github.com/pakpak123/Theory-Computing-Project">Source Code</a></li>
+              <li><a href="RE.html"> สรุป Regular expressions</a></li>
+              
+            </ul>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="container1">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <p class="copyright-text">Computer Engineering, 
+         <a href="https://www.kmitl.ac.th/"> King Mongkut's Institute of Technology Ladkrabang<br></a>
+            </p>
+          </div>
+
+          
+        </div>
+      </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+    <!-- <script type="text/javascript" src="../js/virtual-select.min.js"></script> -->
+    <script type="text/javascript" src="{{ url_for ('static', filename='js/virtual-select.min.js') }}"></script>
+    <script type="text/javascript">
+      VirtualSelect.init({
+        ele: '#multi_option'
+      });
+    </script>
+  </body>
+</html>
