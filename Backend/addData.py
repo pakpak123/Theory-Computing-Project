@@ -3,13 +3,14 @@ from bs4 import BeautifulSoup
 import re
 import mysql.connector
 
-db = mysql.connector.connect(
-    host="sql12.freemysqlhosting.net",
-    user="sql12608247",
-    password="jajr8yFYK9",
-    database="sql12608247"
-    )
-mycursor = db.cursor()
+#-----config ที่อยู่ DB-----
+# db = mysql.connector.connect(
+#     host="sql12.freemysqlhosting.net",
+#     user="sql12608247",
+#     password="jajr8yFYK9",
+#     database="sql12608247"
+#     )
+# mycursor = db.cursor()
 
 #-----ดึงข้อมูลจากเว็บ-----
 def database(web):
@@ -65,6 +66,7 @@ def database(web):
 #-----สร้าง CSV-----
 def writeCSV(data, name):
     with open(f'วัดใน{name}.csv', "w", encoding='utf-8') as f:
+        f.write(name + "\n")
         for TempleName in data:
             f.write(TempleName + "\n")
 
@@ -109,5 +111,5 @@ writeCSV(Chainat_Temple, Chainat)
 writeCSV(Chaiyaphum_Temple, Chaiyaphum)
 writeCSV(Chonburi_Temple, Chonburi)
 
-mycursor.close()
-db.close()
+# mycursor.close()
+# db.close()
