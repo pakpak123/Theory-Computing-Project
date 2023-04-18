@@ -50,12 +50,13 @@ def list_add():
         # แปลง hidden_provinces เป็น list
         hidden_provinces = hidden_provinces.split(",")
 
-        print(hidden_provinces)
         temple_names = []
         province_names = []
 
         for province in hidden_provinces:
+            # เพิ่มใน list จังหวัดที่เลือก
             province_names.append(thaiProvince(province))
+            # แสดงชื่อวัดจาก csv
             with open(path_provinces[province],encoding='utf8') as file:
                 reader= csv.reader(file)
                 for e in reader:
