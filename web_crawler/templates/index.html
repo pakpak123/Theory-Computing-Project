@@ -51,10 +51,23 @@
         </div>
 
         <!-- ส่วนแสดงข้อมูล -->
-        <div class="container">
+
+        <!-- <div class="container">
           <div class="selects">
             {{data}}
+          </div> -->
+          <div class="container">
+            <table id="datatable">
+              {% for row_temple in temples %}
+                <tr>
+                {% for col in row_temple %}
+                <td>{{ col }}</td>
+                {% endfor %}
+                </tr>
+              {% endfor %}
+            </table>
           </div>
+
       
         
         
