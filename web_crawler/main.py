@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,send_file
 import pandas as pd
 import csv
 
@@ -49,6 +49,11 @@ def home():
                     temple_names.append(e)
         return render_template("index.html",temples=temple_names,provinces=province_names)
     return render_template("index.html")
+
+@app.route("/download")
+def download_file():
+    path = "D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\data\Chainat_Temple.csv"
+    return send_file(path,as_attachment=True)
 
 if __name__ == "__main__":
     app.run(debug=True)
