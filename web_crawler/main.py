@@ -1,11 +1,52 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,request
+import pandas as pd
+import csv
 
 app = Flask(__name__)
 
-@app.route("/")
+# แปลงชื่อตัวแปรจังหวัด
+def thaiProvince(province_eng):
+    province_th = {
+        "Chachoengsao" : "ฉะเชิงเทรา",
+        "Chainat" : "ชัยนาท",
+        "Chaiyaphum" : "ชัยภูมิ",
+        "Chonburi": "ชลบุรี"
+    }
+    return province_th[province_eng]
+
+@app.route("/",methods=['GET','POST'])
 def home():
-    data = "Hi"
-    return render_template("index.html",data=data)
+
+    province_names = ["Chachoengsao","Chainat","Chaiyaphum","Chonburi"]
+    path_provinces = {
+    "Chachoengsao" : "D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\data\Chachoengsao_Temple.csv",
+    "Chainat" : "D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\data\Chainat_Temple.csv",
+    "Chaiyaphum" : "D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\data\Chaiyaphum_Temple.csv",
+    "Chonburi": "D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\data\Chonburi_Temple.csv"
+    }
+
+    if request.method == 'POST':
+        temple_names = []
+        province_names = []
+
+        #--- รับข้อมูลจาก multi option
+        data_from_multi = request.form.getlist('mymultioption')
+
+        #--- เลือกข้อมูลมาแสดงทีละจังหวัดที่เลือก โดยเช็คจาก list
+        for province in data_from_multi:
+            # เพิ่มใน list จังหวัดที่เลือก
+            province_names.append(thaiProvince(province))
+            # แสดงชื่อวัดจาก csv
+            with open(path_provinces[province],encoding='utf8') as file:
+                reader= csv.reader(file)
+                for e in reader:
+                    temple_names.append(e)
+            temple_names.append("------------------------")
+        print(temple_names)
+        print("///******************///")
+        print(province_names)
+        return render_template("index.html",temple=temple_names,provinces=province_names)
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
