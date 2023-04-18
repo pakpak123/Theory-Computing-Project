@@ -26,26 +26,28 @@ def home():
     }
 
     if request.method == 'POST':
+        
         temple_names = []
         province_names = []
 
         #--- รับข้อมูลจาก multi option
         data_from_multi = request.form.getlist('mymultioption')
-
+        print(data_from_multi)
+        print(type(data_from_multi))
+        #--- Ex. ['จังหวัด1, จังหวัด2'] แปลงเป็น ['จังหวัด1','จังหวัด2']
+        data_from_multi = data_from_multi[0].split(',')
+        
         #--- เลือกข้อมูลมาแสดงทีละจังหวัดที่เลือก โดยเช็คจาก list
         for province in data_from_multi:
             # เพิ่มใน list จังหวัดที่เลือก
             province_names.append(thaiProvince(province))
             # แสดงชื่อวัดจาก csv
+            temple_names.append('0')
             with open(path_provinces[province],encoding='utf8') as file:
                 reader= csv.reader(file)
                 for e in reader:
                     temple_names.append(e)
-            temple_names.append("------------------------")
-        print(temple_names)
-        print("///******************///")
-        print(province_names)
-        return render_template("index.html",temple=temple_names,provinces=province_names)
+        return render_template("index.html",temples=temple_names,provinces=province_names)
     return render_template("index.html")
 
 if __name__ == "__main__":

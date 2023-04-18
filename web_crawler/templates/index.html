@@ -66,12 +66,18 @@
           </div> -->
           <div class="container">
             <table id="datatable">
-              {% for row_temple in temples %}
-                <tr>
-                {% for col in row_temple %}
-                <td>{{ col }}</td>
+              {% for province in provinces %}
+                {% for row_temple in temples %}
+                  <tr>
+                  {% for col in row_temple %}
+                  {% if col == '0' %}
+                  <td>-------{{ province }}-------</td>
+                  {% else %}
+                  <td>{{ col }}</td>
+                  {% endif %}
+                  {% endfor %}
+                  </tr>
                 {% endfor %}
-                </tr>
               {% endfor %}
             </table>
           </div>
