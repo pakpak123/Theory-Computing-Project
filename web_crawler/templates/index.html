@@ -99,7 +99,7 @@
             })
           }
           else {
-            alert("Please select framework");
+            alert("Please select province");
             return false;
           }
         });
@@ -118,17 +118,15 @@
 
     <!-- ส่วนแสดงข้อมูล -->
     <div class="container">
-      <div class="selects">
-        <table id="datatable">
-          {% for row in csv %}
+      <table id="datatable">
+        {% for row in csv %}
           <tr>
-            {% for col in row %}
-            <td>{{ col }}</td>
-            {% endfor %}
-          </tr>
+          {% for col in row %}
+          <td>{{ col }}</td>
           {% endfor %}
-        </table>
-      </div>
+          </tr>
+        {% endfor %}
+      </table>
     </div>
 
 

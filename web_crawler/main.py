@@ -65,7 +65,7 @@ def list_add():
         print("///******************///")
         print(province_names)
         # return jsonify(msg)
-    return render_template("index.html", province=province ,csv=temple_names,provinces=province_names)
+    return render_template("index.html",temples=temple_names,provinces=province_names)
         
         # else:
         #     return render_template("index.html")
