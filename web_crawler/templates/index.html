@@ -2,62 +2,69 @@
 
 {% block content %}
 
-    <div class="container">
-        <div class="selects">
-          <label>วัดในแต่ละจังหวัด</label>
-          <br/>
-          <form method="post" id="multiple_select_form">
-          <select name="mymultioption" id="multi_option" multiple name="native-select" placeholder="กรุณาเลือกจังหวัด"
-            data-silent-initial-value-set="false">
-            <option value="Chachoengsao">ฉะเชิงเทรา</option>
-            <option value="Chonburi">ชลบุรี</option>
-            <option value="Chainat">ชัยนาท</option>
-            <option value="Chaiyaphum">ชัยภูมิ</option>
-          </select>
-          <!-- <a class="btn btn-outline-light" href="#1" role="button">กดเลย</a> -->
-          <input type="submit" name="submit" class="btn btn-info" value="Submit" />
-          </form>
-        </div>
-        <br>
+<div class="container">
+  <div class="selects">
+    <label>วัดในแต่ละจังหวัด</label>
+    <br />
+    <form method="post" id="multiple_select_form">
+      <select name="mymultioption" id="multi_option" multiple name="native-select" placeholder="กรุณาเลือกจังหวัด"
+        data-silent-initial-value-set="false">
+        <option value="Chachoengsao">ฉะเชิงเทรา</option>
+        <option value="Chonburi">ชลบุรี</option>
+        <option value="Chainat">ชัยนาท</option>
+        <option value="Chaiyaphum">ชัยภูมิ</option>
+      </select>
+      <!-- <a class="btn btn-outline-light" href="#1" role="button">กดเลย</a> -->
+      <input type="submit" name="submit" class="btn btn-info" value="Submit" />
+    </form>
+  </div>
+  <br>
 
-        <!-- ตรงนี้เป็นวิธีการเพิ่มLink สำหรับเปิดไฟล์หรือว่าดาวน์โหลดไฟล์ ลองเล่นดูได้ ปล.ไฟล์.csv ไม่สามารถแสดงได้ต้องบังคับโหลดเท่านั้น -->
-        <!-- <a href="data/test.txt"> View Infomation</a>
+  <!-- ตรงนี้เป็นวิธีการเพิ่มLink สำหรับเปิดไฟล์หรือว่าดาวน์โหลดไฟล์ ลองเล่นดูได้ ปล.ไฟล์.csv ไม่สามารถแสดงได้ต้องบังคับโหลดเท่านั้น -->
+  <!-- <a href="data/test.txt"> View Infomation</a>
         <br>
         <a href="data/test.txt" download="เนื้อเพลงธาตุทองซาวน์"> Download Infomation</a>
         <br> -->
-        <!-- <a href="data/Practice PTSA.csv" download="Practice PTSA"> Download Practice PTSA</a>
+  <!-- <a href="data/Practice PTSA.csv" download="Practice PTSA"> Download Practice PTSA</a>
          -->
 
-        <!-- ส่วนแสดงชื่อจังหวัดที่เลือก -->
-        <p>
-          <span class="nowrap">จังหวัดที่เลือก : </span>
-          {% for province in provinces %}
-          <span class="nowrap"> {{ province }}</span>
-          {% endfor %}
-        </p>
+  <!-- ส่วนแสดงชื่อจังหวัดที่เลือก -->
+  <p>
+    <span class="nowrap">จังหวัดที่เลือก : </span>
+    {% for province in provinces %}
+    <span class="nowrap"> {{ province }}</span>
+    {% endfor %}
+  </p>
 
-        <a href="{{ url_for ('download_file') }}" > Download csv </a>
+  <a href="{{ url_for ('download_file') }}"> Download csv </a>
 
-          <!-- ส่วนแสดงชื่อวัด -->
-          <div class="container">
-            <table id="datatable">
+  <!-- ส่วนแสดงชื่อวัด -->
+  <div class="container">
 
-              {% for province in provinces %}
-                {% for row_temple in temples %}
-                  <tr>
-                  {% for col in row_temple %}
-                  {% if col == '0' %}
-                  <td>------------------------------------ {{ province }} ------------------------------------</td>
-                  {% else %}
-                  <td>{{ col }}</td>
-                  {% endif %}
-                  {% endfor %}
-                  </tr>
-                {% endfor %}
-              {% endfor %}
-            </table>
-          </div>
+  {% set count = 0 %}
+  {% for i in range(provinces|length) %}
+      <p>{{ i }}</p>
+  {% endfor %} 
 
-    </div>
+
+    <!-- <table id="datatable">
+
+      {% set count = 0 %}
+      {% for temple in temples %}
+      <tr>
+        {% if temple == '0' %}
+        <td>{{count}}</td>
+        <td>------------------------------------ {{ provinces[count] }} ------------------------------------</td>
+        {% set count = count + 1 %}
+        <td>{{count}}</td>
+        {% else %}
+        <td>{{ temple }}</td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </table> -->
+  </div>
+
+</div>
 
 {% endblock %}

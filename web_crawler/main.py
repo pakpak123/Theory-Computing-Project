@@ -25,6 +25,7 @@ def home():
     "Chonburi": "D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\data\Chonburi_Temple.csv"
     }
     path_download_file = "D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\data\Download.csv"
+    counter = 0
 
     if request.method == 'POST':
         
@@ -33,8 +34,8 @@ def home():
 
         #--- รับข้อมูลจาก multi option
         data_from_multi = request.form.getlist('mymultioption')
-        print(data_from_multi)
-        print(type(data_from_multi))
+        # print(data_from_multi)
+        # print(type(data_from_multi))
         #--- Ex. ['จังหวัด1, จังหวัด2'] แปลงเป็น ['จังหวัด1','จังหวัด2']
         data_from_multi = data_from_multi[0].split(',')
         
@@ -47,14 +48,16 @@ def home():
             with open(path_provinces[province],encoding='utf8') as file:
                 reader= csv.reader(file)
                 for e in reader:
-                    temple_names.append(e)
+                    temple_names.append(e[0])
 
         #--- เขียนชื่อวัดใส่csvสำหรับดาวน์โหลด
         with open(path_download_file, "w", encoding='utf-8') as file:
-            for row in temple_names:
-                for temple in row:
-                    if(temple != '0'):
-                        file.write(temple + "\n")
+            for temple in temple_names:
+                if(temple != '0'):
+                    file.write(temple + "\n")
+
+        # print(temple_names)
+        print(province_names)
 
         return render_template("index.html",temples=temple_names,provinces=province_names)
     return render_template("index.html")
