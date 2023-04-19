@@ -39,30 +39,17 @@
   <a href="{{ url_for ('download_file') }}"> Download csv </a>
 
   <!-- ส่วนแสดงชื่อวัด -->
+
   <div class="container">
-
-  {% set count = 0 %}
-  {% for i in range(provinces|length) %}
-      <p>{{ i }}</p>
-  {% endfor %} 
-
-
-    <!-- <table id="datatable">
-
-      {% set count = 0 %}
-      {% for temple in temples %}
-      <tr>
-        {% if temple == '0' %}
-        <td>{{count}}</td>
-        <td>------------------------------------ {{ provinces[count] }} ------------------------------------</td>
-        {% set count = count + 1 %}
-        <td>{{count}}</td>
-        {% else %}
-        <td>{{ temple }}</td>
-        {% endif %}
-      </tr>
-      {% endfor %}
-    </table> -->
+  {% set count = namespace(value=0) %}
+  {% for temple in temples %}
+    {% if temple == '0' %}
+      <p>------------------------------------ {{ provinces[count.value] }} ------------------------------------</p>
+      {% set count.value = count.value + 1 %}
+    {% else %}
+      <p>{{ temple }}</p>
+    {% endif %}
+  {% endfor %}
   </div>
 
 </div>
