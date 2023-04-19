@@ -1,5 +1,4 @@
 from flask import Flask,render_template,request,send_file
-import pandas as pd
 import csv
 
 app = Flask(__name__)
@@ -25,7 +24,6 @@ def home():
     "Chonburi": "D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\data\Chonburi_Temple.csv"
     }
     path_download_file = "D:\EDUCATION\KMITL\Study\Y3_t2_2022\Theory\Web_Crawler\Theory-Computing-Project\web_crawler\data\Download.csv"
-    counter = 0
 
     if request.method == 'POST':
         
