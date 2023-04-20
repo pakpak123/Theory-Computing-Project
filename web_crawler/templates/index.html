@@ -41,7 +41,7 @@
     {% for temple in temples %}
     {% if temple == '0' %}
     <div class="sub-container" id="{{count.value}}">
-    <p>------------------------------------ {{ provinces[count.value] }} ------------------------------------</p>
+    <p class="topic">------------------------------------ {{ provinces[count.value] }} ------------------------------------</p>
     {% set count.value = count.value + 1 %}
     </div>
     {% else %}
