@@ -104,9 +104,16 @@ li {
 .button {
     text-align: center;
 }
+.button-province {
+    text-align: left;
+}
 
 a {
     margin: 2px;
+}
+.topic {
+    font-size: 20px;
+    font-weight: 800;
 }
 
 .container1 {

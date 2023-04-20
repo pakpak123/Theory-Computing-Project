@@ -19,16 +19,20 @@
     </form>
   </div>
   <br>
+  
 
   {% if provinces|length > 0 %}
+  {% set count = namespace(value=0) %}
   <!-- ส่วนแสดงชื่อจังหวัดที่เลือก -->
-  <p>
-    <span class="nowrap">จังหวัดที่เลือก : </span>
+  <p class="topic">
+    <span class="nowrap">จังหวัดที่เลือก : 
     {% for province in provinces %}
-    <span class="nowrap"> {{ province }}</span>
+      <a class="btn btn-outline-dark" href="#{{count.value}}" role="button">{{ province }}</a>
+      {% set count.value = count.value + 1 %}
     {% endfor %}
+    </span>
   </p>
-  <a href="{{ url_for ('download_file') }}"> Download file csv </a>
+  <a class="btn btn-primary" href="{{ url_for ('download_file') }}" role="button">Download file csv</a>
   {% endif %}
 
   <!-- ส่วนแสดงชื่อวัด -->
@@ -36,8 +40,10 @@
     {% set count = namespace(value=0) %}
     {% for temple in temples %}
     {% if temple == '0' %}
+    <div class="sub-container" id="{{count.value}}">
     <p>------------------------------------ {{ provinces[count.value] }} ------------------------------------</p>
     {% set count.value = count.value + 1 %}
+    </div>
     {% else %}
     <p>{{ temple }}</p>
     {% endif %}
