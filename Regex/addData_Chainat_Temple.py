@@ -48,9 +48,7 @@ for i in range(count_for_PopList):
 
 with open(f'วัดใน{ProvinceName}.csv', "w", encoding='utf-8') as f:
     for TempleName in TempleName_list:
-        SpliteName = re.split("\s", TempleName)
+        # SpliteName = re.split("\s", TempleName)
         f.write(TempleName + "\n")
 
-    # f.write(f'วัดใน{ProvinceName}มี {len(TempleName_list)} สถานที่')
-
-
+    #f.write(f'วัดใน{ProvinceName}มี {len(TempleName_list)} สถานที่')
