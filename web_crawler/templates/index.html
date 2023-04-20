@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container" id="back">
   <div class="selects">
     <label>วัดในแต่ละจังหวัด</label>
     <br />
@@ -41,8 +41,10 @@
     {% for temple in temples %}
     {% if temple == '0' %}
     <div class="sub-container" id="{{count.value}}">
-    <p class="topic">------------------------------------ {{ provinces[count.value] }} ------------------------------------</p>
-    {% set count.value = count.value + 1 %}
+      <p class="topic">------------------------------------ {{ provinces[count.value] }} ------------------------------------</p>
+      <a class="go-back" href="#back">back to top</a>
+      <!-- <a href="#back"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i> go back </a> -->
+      {% set count.value = count.value + 1 %}
     </div>
     {% else %}
     <p>{{ temple }}</p>

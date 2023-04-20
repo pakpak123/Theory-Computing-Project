@@ -10,6 +10,10 @@ body {
     white-space: nowrap ;
 }
 
+.go-back{
+    color: #000000;
+    font-weight: 800;
+}
 .centerpic {
     display: flex;
     position: relative;
