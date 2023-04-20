@@ -12,7 +12,7 @@ pip install flask
 [link](https://github.com/pakpak123/Theory-Computing-Project/tree/main/web_crawler)
 
 ### ส่วนของการดึงข้อมูล (folder: Regex)
-[link](https://github.com/pakpak123/Theory-Computing-Project/tree/main/Backend)
+[link](https://github.com/pakpak123/Theory-Computing-Project/tree/main/Regex)
 
 ### ไฟล์ csv
 [link](https://github.com/pakpak123/Theory-Computing-Project/tree/main/web_crawler/data)
