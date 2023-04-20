@@ -3,9 +3,8 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
-
 'Requesting the HTML from the web page.'
-page = requests.get("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%89%E0%B8%B0%E0%B9%80%E0%B8%8A%E0%B8%B4%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%A3%E0%B8%B2")
+page = requests.get("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%A5%E0%B8%9A%E0%B8%B8%E0%B8%A3%E0%B8%B5")
 page.content
 
 'province name'
@@ -71,10 +70,22 @@ for i in range(count_for_PopList):
     del_notTemple = TempleName_list.pop()
     # print(del_notTemple)
 
-#'Write results of Regular to Output.csv'
+
+RegularExpression_pattern_for_drop_duplicate_temple = r'วัดคลองพลู'
+search_duplicateTemple = re.search(
+    RegularExpression_pattern_for_drop_duplicate_temple, '\n'.join(TempleName_list))
+
+index_duplicateTemple = TempleName_list.index(search_duplicateTemple.group())
+
+
+
+drop_duplicateTemple = TempleName_list.pop(index_duplicateTemple)
+
+
+'Write results of Regular to Output.csv'
 with open(f'วัดใน{ProvinceName}.csv', "w", encoding='utf-8') as f:
     for TempleName in TempleName_list:
-        SpliteName = re.split("\s", TempleName)
+        # SpliteName = re.split("\s", TempleName)
         f.write(TempleName + "\n")
 
-    # f.write(f'วัดใน{ProvinceName}มี {len(TempleName_list)} สถานที่')
+    #f.write(f'วัดใน{ProvinceName}มี {len(TempleName_list)} สถานที่')

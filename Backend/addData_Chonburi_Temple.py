@@ -1,7 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 import re
-import mysql.connector
 
 page = requests.get("https://th.wikipedia.org/wiki/%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%99%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B1%E0%B8%94%E0%B8%8A%E0%B8%A5%E0%B8%9A%E0%B8%B8%E0%B8%A3%E0%B8%B5")
 page.content
@@ -57,38 +56,10 @@ index_duplicateTemple = TempleName_list.index(search_duplicateTemple.group())
 
 drop_duplicateTemple = TempleName_list.pop(index_duplicateTemple)
 
-#with open(f'วัดใน{ProvinceName}.csv', "w", encoding='utf-8') as f:
-    #for TempleName in TempleName_list:
-        # SpliteName = re.split("\s", TempleName)
-        #f.write(TempleName + "\n")
+with open(f'วัดใน{ProvinceName}.csv', "w", encoding='utf-8') as f:
+    for TempleName in TempleName_list:
+        SpliteName = re.split("\s", TempleName)
+        f.write(TempleName + "\n")
 
-    #f.write(f'วัดใน{ProvinceName}มี {len(TempleName_list)} สถานที่')
+    # f.write(f'วัดใน{ProvinceName}มี {len(TempleName_list)} สถานที่')
 
-#-----establish a MySQL connection-----
-# settingแล้วแต่เครื่อง ส่วนใหญ่passwordต่าง
-db = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="Pondps123",
-  database="test"
-)
-
-mycursor = db.cursor()
-
-table_name = "Chonburi_Temple"
-columns = "id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(45)"
-
-mycursor.execute("CREATE TABLE IF NOT EXISTS " + table_name + " (" + columns + ")")
-
-mycursor.execute("TRUNCATE TABLE "+ table_name)
-
-i=1
-for row in TempleName_list:
-    mycursor.execute("INSERT INTO "+ table_name + " (id,NAME) VALUES (%s, %s)",[i,row])
-    db.commit()
-    #print(i,row)
-    i+=1
-print(i-1,row)
-mycursor.close()
-db.close()
-print("Done")

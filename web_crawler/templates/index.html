@@ -20,7 +20,7 @@
   </div>
   <br>
 
-
+  {% if provinces|length > 0 %}
   <!-- ส่วนแสดงชื่อจังหวัดที่เลือก -->
   <p>
     <span class="nowrap">จังหวัดที่เลือก : </span>
@@ -28,21 +28,20 @@
     <span class="nowrap"> {{ province }}</span>
     {% endfor %}
   </p>
-
-  <a href="{{ url_for ('download_file') }}"> Download csv </a>
+  <a href="{{ url_for ('download_file') }}"> Download file csv </a>
+  {% endif %}
 
   <!-- ส่วนแสดงชื่อวัด -->
-
   <div class="container">
-  {% set count = namespace(value=0) %}
-  {% for temple in temples %}
+    {% set count = namespace(value=0) %}
+    {% for temple in temples %}
     {% if temple == '0' %}
-      <p>------------------------------------ {{ provinces[count.value] }} ------------------------------------</p>
-      {% set count.value = count.value + 1 %}
+    <p>------------------------------------ {{ provinces[count.value] }} ------------------------------------</p>
+    {% set count.value = count.value + 1 %}
     {% else %}
-      <p>{{ temple }}</p>
+    <p>{{ temple }}</p>
     {% endif %}
-  {% endfor %}
+    {% endfor %}
   </div>
 
 </div>
