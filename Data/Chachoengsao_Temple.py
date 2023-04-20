@@ -34,7 +34,7 @@ RegularExpression_pattern = r'title="(วัด.*?)"'
 TempleName_list = re.findall(RegularExpression_pattern, content)
 # print(TempleName_list)
 '''
-- ? คือ ตั้งแต่ วัด.* //[จนถึงตัวนี้ (")] //[มี " ถ้ามีมากกว่า 1 มันจะตัด language เหลือแค่ตัวเดียว --> แล้วเอา language ถึงแค่นั้น , ถ้า = 0 ถือว่า language ไม่ match กัน]
+- ? คือ ตั้งแต่ วัด.* //[จนถึงตัวนี้ " ] //[มี " ถ้ามีมากกว่า 1 มันจะตัด language เหลือแค่ตัวเดียว --> แล้วเอา language ถึงแค่นั้น , ถ้า = 0 ถือว่า language ไม่ match กัน]
 - findall เก็บข้อมูลแค่ภายในวงเล็บ(group)
 '''
 
@@ -71,10 +71,12 @@ for i in range(count_for_PopList):
     del_notTemple = TempleName_list.pop()
     # print(del_notTemple)
 
-#'Write results of Regular to Output.csv'
+
+
+'Write results of Regular to Output.csv'
 with open(f'วัดใน{ProvinceName}.csv', "w", encoding='utf-8') as f:
     for TempleName in TempleName_list:
-        SpliteName = re.split("\s", TempleName)
+        # SpliteName = re.split("\s", TempleName)
         f.write(TempleName + "\n")
 
-    # f.write(f'วัดใน{ProvinceName}มี {len(TempleName_list)} สถานที่')
+    #f.write(f'วัดใน{ProvinceName}มี {len(TempleName_list)} สถานที่')

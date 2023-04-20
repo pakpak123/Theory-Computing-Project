@@ -43,13 +43,13 @@ def home():
             province_names.append(thaiProvince(province))
             # แสดงชื่อวัดจาก csv
             temple_names.append('0')
-            with open(path_provinces[province],encoding='utf8') as file:
+            with open(path_provinces[province],encoding='utf-8') as file:
                 reader= csv.reader(file)
                 for e in reader:
                     temple_names.append(e[0])
 
         #--- เขียนชื่อวัดใส่csvสำหรับดาวน์โหลด
-        with open(path_download_file, "w", encoding='utf-8') as file:
+        with open(path_download_file, "w", encoding='utf-16') as file:
             for temple in temple_names:
                 if(temple != '0'):
                     file.write(temple + "\n")
